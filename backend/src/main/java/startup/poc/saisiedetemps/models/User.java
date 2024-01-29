@@ -26,6 +26,8 @@ public class User implements UserDetails {
     private Integer id;
     private String firstname;
     private String lastname;
+    private String username;
+
     private String email;
     private String password;
 
@@ -33,6 +35,14 @@ public class User implements UserDetails {
     private Role role;
     @OneToMany(mappedBy = "user")
     private List<Token> tokens;
+
+    @OneToMany(mappedBy = "manager")
+    private List<Project> projects;
+
+    @ManyToOne
+    private User manager;
+
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
