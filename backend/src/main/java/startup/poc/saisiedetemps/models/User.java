@@ -23,11 +23,12 @@ import java.util.List;
 public class User implements UserDetails {
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
     private String firstname;
     private String lastname;
+    @Column(unique = true)
     private String username;
-
+    @Column(unique = true)
     private String email;
     private String password;
 

@@ -23,9 +23,7 @@ public class LoadDatabase {
                                UserRepository userRepository, TimeRepository timeRepository) {
         return new CommandLineRunner() {
             public void run(String... args) throws Exception {
-                initProjectTable(projectRepository);
-                initTimeTable(timeRepository);
-                initUserTable(userRepository);
+               
             }
         };
     }

@@ -11,9 +11,9 @@ import startup.poc.saisiedetemps.models.Time;
 public interface TimeRepository extends JpaRepository<Time, Long> {
 
 
-    public List<Time> findAllByUserUserIdAndDateOfProject(Long userId, String date);
+    public List<Time> findAllByUserIdAndDateOfProject(Long userId, String date);
 
-    public List<Time> findByUserUserId(Long managerId);
+    public List<Time> findByUserId(Long managerId);
 
 
 }

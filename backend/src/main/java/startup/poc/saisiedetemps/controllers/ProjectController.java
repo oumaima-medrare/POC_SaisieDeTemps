@@ -2,6 +2,8 @@ package startup.poc.saisiedetemps.controllers;
 
 import java.util.List;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import startup.poc.saisiedetemps.dto.CreateProjectRequest;
 import startup.poc.saisiedetemps.models.Project;
 import startup.poc.saisiedetemps.services.ProjectService;
 
@@ -18,6 +21,7 @@ import startup.poc.saisiedetemps.services.ProjectService;
 @RestController
 @RequestMapping("/api/v1")
 @CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600, methods = { RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH })
+@Tag(name = "Projects")
 public class ProjectController {
 
     @Autowired
@@ -28,8 +32,9 @@ public class ProjectController {
         return this.projectService.findAllProjects();
     }
 
-    @PostMapping("/projects/{username}")
-    Project createTask(@RequestBody Project project,@PathVariable String username) {
-        return this.projectService.createProject(project,username);
+    @PostMapping("/projects")
+    @Operation(summary = "Create project")
+    Project createProject(@RequestBody CreateProjectRequest projectRequest) {
+        return this.projectService.createProject(projectRequest);
     }
 }

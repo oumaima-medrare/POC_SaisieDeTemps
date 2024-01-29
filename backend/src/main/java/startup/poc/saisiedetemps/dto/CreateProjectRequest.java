@@ -1,19 +1,19 @@
 package startup.poc.saisiedetemps.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import startup.poc.saisiedetemps.securtiy.Role;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ChangeUserRoleRequest {
-
+public class CreateProjectRequest {
     @NotBlank
-    private Long userId;
+    @Schema(defaultValue = "Project's title")
+    private String title;
     @NotBlank
-    private Role role;
-
+    @Schema(defaultValue = "Project's description")
+    private String description;
 }

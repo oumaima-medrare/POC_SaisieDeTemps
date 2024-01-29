@@ -1,14 +1,18 @@
 package startup.poc.saisiedetemps.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 import startup.poc.saisiedetemps.auth.AuthenticationService;
+import startup.poc.saisiedetemps.dto.CreateProjectRequest;
 import startup.poc.saisiedetemps.models.Project;
 import startup.poc.saisiedetemps.models.User;
 import startup.poc.saisiedetemps.repositories.ProjectRepository;
 import startup.poc.saisiedetemps.services.ProjectService;
+import startup.poc.saisiedetemps.services.UserService;
 
 
 @Service
@@ -16,6 +20,8 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private AuthenticationService authService;
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private ProjectRepository projectRepository;
@@ -27,13 +33,16 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Transactional
-    public Project createProject(Project project,String username) {
-        User currentUser = this.authService.getLoggedInUserInfo(username);
+    public Project createProject(CreateProjectRequest projectRequest) {
+        Project project = new Project();
+        project.setDescription(projectRequest.getDescription());
+        project.setTitle(projectRequest.getTitle());
+        User currentUser = this.authService.getLoggedInUserInfo();
         project.setManager(currentUser);
         return this.projectRepository.save(project);
     }
 
     public List<Project>  findProjectsOfManager(Long managerId) {
-        return this.projectRepository.findByManagerUserId(managerId);
+        return this.projectRepository.findByManagerId(managerId);
     }
 }

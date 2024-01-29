@@ -9,6 +9,6 @@ import startup.poc.saisiedetemps.models.Project;
 
 public interface ProjectRepository extends JpaRepository<Project, Long> {
 
-    List<Project> findByManagerUserId(Long managerId);
+    List<Project> findByManagerId(Long managerId);
 
 }

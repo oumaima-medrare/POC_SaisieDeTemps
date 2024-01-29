@@ -56,11 +56,11 @@ public class TimeServiceImpl implements TimeService {
     }
 
     public List<Time> getTimeContent(Long userId,String date) {
-        return timeRepository.findAllByUserUserIdAndDateOfProject(userId, date);
+        return timeRepository.findAllByUserIdAndDateOfProject(userId, date);
     }
 
     public List<Time> findTimesOfUser(Long idUser) {
-        return this.timeRepository.findByUserUserId(idUser);
+        return this.timeRepository.findByUserId(idUser);
     }
 
 

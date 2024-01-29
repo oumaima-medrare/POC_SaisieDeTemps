@@ -5,6 +5,7 @@ import java.time.Instant;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import startup.poc.saisiedetemps.securtiy.Role;
 
 @Data
 @AllArgsConstructor
@@ -17,7 +18,7 @@ public class CreateUserRequest {
     private String email;
     private String password;
     private Instant createdAt;
-    private Long roleId;
+    private Role role;
     private Long managerId;
 
 }
