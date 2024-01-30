@@ -45,7 +45,7 @@ export class UserAuthService {
     localStorage.clear();
   }
 
-  public isLoggedIn() : Boolean{
+  public isLoggedIn() : boolean{
     return this.getToken() != null;
   }
 

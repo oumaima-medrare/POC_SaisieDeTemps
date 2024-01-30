@@ -8,7 +8,6 @@ import {Router} from "@angular/router";
 })
 export class UserService {
   PATH_OF_API = "http://localhost:3000/api/v1/auth";
-  constructor() { }
   requestHeader = new HttpHeaders(
     { "noauth": "true" }
   );

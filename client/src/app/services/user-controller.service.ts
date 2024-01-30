@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 export class UserControllerService {
 
 
-  PATH_OF_API = "http://localhost:3000i/api/v1";
+  PATH_OF_API = "http://localhost:3000/api/v1";
 
   constructor(private httpclient: HttpClient, private router: Router) {
 
