@@ -1,0 +1,43 @@
+<!-- c -->
+
+
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+  <a href="#" class="navbar-brand">Our app</a>
+  <ul class="navbar-nav mr-auto" routerLinkActive="active">
+    <li class="nav-item">
+      <a href="/home" class="nav-link" routerLink="home">Home </a>
+    </li>
+    <li class="nav-item" *ngIf="isAdmin()">
+      <a href="/status" class="nav-link" routerLink="change_status">Status</a>
+      <a href="/management" class="nav-link" routerLink="management">Management</a>
+   
+    </li>
+    <li class="nav-item" *ngIf="isUser()">
+   
+      <a href="/times" class="nav-link" routerLink="times">Times</a>
+    </li>
+    <li class="nav-item" *ngIf="isManager()">
+    
+      <a href="/projects" class="nav-link" routerLink="projects">Projects</a>
+      <a href="/users" class="nav-link" routerLink="users">Users</a>
+      <a href="/times" class="nav-link" routerLink="times">Times</a>
+    </li>
+  
+  </ul>
+
+  <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn()">
+   
+    <li class="nav-item">
+      <a href="/login" class="nav-link" routerLink="login">Login</a>
+    </li>
+  </ul>
+
+  <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn()">
+    <li class="nav-item">
+      <a href="/profile" class="nav-link" routerLink="profile"> profile</a>
+    </li>
+    <li class="nav-item">
+      <a href class="nav-link" (click)="logout()">LogOut</a>
+    </li>
+  </ul>
+</nav>
