@@ -17,7 +17,6 @@ public class CreateUserRequest {
     private String lastname;
     private String email;
     private String password;
-    private Instant createdAt;
     private Role role;
     private Long managerId;
 

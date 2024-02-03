@@ -3,6 +3,7 @@ package startup.poc.saisiedetemps.models;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,20 +15,17 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "times")
 public class Time {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private LocalDateTime dateStart;
-
     private LocalDateTime dateEnd;
 
-    private String dateOfProject;
-    // many to one vers users
     @ManyToOne
     private User user;
 
-    // many to one vers projet
     @ManyToOne
     private Project project;
 

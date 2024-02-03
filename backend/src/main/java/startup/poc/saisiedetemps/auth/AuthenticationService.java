@@ -118,11 +118,5 @@ public class AuthenticationService {
     public User getLoggedInUserInfo(String username) {
         return  userRepository.findByUsername(username).get();
     }
-
-    public User getLoggedInUserInfo() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String email = (String) auth.getPrincipal();
-        return  userRepository.findByEmail(email).get();
-    }
-
+    
 }

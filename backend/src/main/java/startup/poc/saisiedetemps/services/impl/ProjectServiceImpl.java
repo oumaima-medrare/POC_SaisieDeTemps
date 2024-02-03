@@ -1,8 +1,6 @@
 package startup.poc.saisiedetemps.services.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
@@ -33,12 +31,11 @@ public class ProjectServiceImpl implements ProjectService {
 
 
     @Transactional
-    public Project createProject(CreateProjectRequest projectRequest) {
+    public Project createProject(CreateProjectRequest projectRequest, User user ) {
         Project project = new Project();
         project.setDescription(projectRequest.getDescription());
         project.setTitle(projectRequest.getTitle());
-        User currentUser = this.authService.getLoggedInUserInfo();
-        project.setManager(currentUser);
+        project.setManager(user);
         return this.projectRepository.save(project);
     }
 

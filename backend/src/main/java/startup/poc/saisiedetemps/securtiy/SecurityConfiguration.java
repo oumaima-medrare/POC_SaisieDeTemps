@@ -21,15 +21,9 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 public class SecurityConfiguration {
 
     private static final String[] WHITE_LIST_URL = {"/api/v1/auth/**",
-            "/v2/api-docs",
-            "/v3/api-docs",
-            "/v3/api-docs/**",
             "/swagger-resources",
             "/swagger-resources/**",
-            "/configuration/ui",
-            "/configuration/security",
             "/swagger-ui/**",
-            "/webjars/**",
             "/swagger-ui.html"};
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
@@ -42,10 +36,8 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(req ->
                         req.requestMatchers(WHITE_LIST_URL)
                                 .permitAll()
-                                .requestMatchers("/api/v1/manager/**").hasAuthority(String.valueOf(Role.MANAGER))
-                                .requestMatchers("/api/v1/admin/**").hasAuthority(String.valueOf(Role.ADMIN))
-                                .requestMatchers("/api/v1/user/**").hasAuthority(String.valueOf(Role.USER))
-                                //.requestMatchers("/api/v1/demo-controller").hasAuthority(String.valueOf(Role.ADMIN))
+                                .requestMatchers("/users/change-role").hasAuthority(String.valueOf(Role.ADMIN))
+                                .requestMatchers("/users/change").hasAuthority(String.valueOf(Role.ADMIN))
                                 .anyRequest()
                                 .authenticated()
                 )
