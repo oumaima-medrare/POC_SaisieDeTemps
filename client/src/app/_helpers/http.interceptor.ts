@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { StorageService } from '../_services/storage.service';
-const TOKEN_HEADER_KEY = 'Authorization';
+
 
 @Injectable()
 export class HttpRequestInterceptor implements HttpInterceptor {
@@ -14,11 +14,12 @@ export class HttpRequestInterceptor implements HttpInterceptor {
       setHeaders:{
         'Content-Type': 'application/json; charset=utf-8',
         'Accept':'application/json',
-        'Authorization':'Bearer '+token
-      }
+        'Authorization':`Bearer ${token}`
+      },
+      withCredentials: true // Include credentials
     });
   }
-
+  console.log(req);
     return next.handle(req);
   }
 }

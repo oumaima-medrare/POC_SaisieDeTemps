@@ -13,6 +13,12 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddUserComponent } from './add-user/add-user.component';
+import { UserTimesComponent } from './user-times/user-times.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -21,10 +27,16 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     LoginComponent,
     HomeComponent,
     ProfileComponent,
-    AddProjectComponent
+    AddProjectComponent,
+    AddUserComponent,
+    UserTimesComponent
   ],
   imports: [
     MatSnackBarModule,
+    MatTableModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatFormFieldModule,
     BrowserModule,
     ReactiveFormsModule, 
     AppRoutingModule,

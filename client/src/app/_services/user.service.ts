@@ -16,25 +16,30 @@ export class UserService {
   public getUsersOfManager(manager_id: number){
     return this.httpclient.get(this.PATH_OF_API + "/users/manager/" + manager_id)
   }
-
+  
   public getProjectsOfManager(){
     return this.httpclient.get(this.PATH_OF_API + "/projects")
   }
 
-  public createTask(request: object){
-    return this.httpclient.post(this.PATH_OF_API + "/times", request);
+  public createTime(request: object){
+    return this.httpclient.post(this.PATH_OF_API + "/times/", request);
   }
 
   public getTimesOfUser(user_id: string | number | null){
     return this.httpclient.get(this.PATH_OF_API + "/times/" + user_id)
   }
 
+  public getCurrentUserTime()
+  {
+    return  this.httpclient.get(this.PATH_OF_API + "/times/current" );
+  }
+
   public exportToPdf(userID: number, date: string){
     return this.httpclient.get(this.PATH_OF_API + "/times/" + userID + "/date/" + date + "/export/pdf", { responseType: 'blob' })
   }
 
-  public createUser(userID: number, request: object){
-    return this.httpclient.post(this.PATH_OF_API + "/users/create/" + userID, request);
+  public createUser( request: object){
+    return this.httpclient.post(this.PATH_OF_API + "/users/" , request);
   }
 
   public createProject( request: object){

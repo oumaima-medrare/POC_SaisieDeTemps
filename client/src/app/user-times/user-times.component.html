@@ -1,0 +1,47 @@
+<div class="container mt-4">
+    <h2>User Times</h2>
+  
+    <div class="row">
+      <div class="col">
+        <div class="mb-3">
+          <label for="project" class="form-label">Project</label>
+          <select class="form-select" id="project" [(ngModel)]="selectedProject">
+            <option *ngFor="let project of projects" [value]="project.id">{{ project.name }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="start" class="form-label">Start Time</label>
+          <input type="datetime-local" class="form-control" id="start" [(ngModel)]="startTime">
+        </div>
+      </div>
+      <div class="col">
+        <div class="mb-3">
+          <label for="end" class="form-label">End Time</label>
+          <input type="datetime-local" class="form-control" id="end" [(ngModel)]="endTime">
+        </div>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary" (click)="createNewTime()">Create Time</button>
+      </div>
+    </div>
+  
+    <table class="table mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Project</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of times">
+          <td>{{ time.project }}</td>
+          <td>{{ time.startTime | date:'short' }}</td>
+          <td>{{ time.endTime | date:'short' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

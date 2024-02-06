@@ -4,21 +4,36 @@
     <li class="nav-item">
       <a href="/home" class="nav-link" routerLink="home">Home</a>
     </li>
+    <!-- //admin section -->
     <li class="nav-item" *ngIf="isAdmin()">
-      <a href="/status" class="nav-link" routerLink="change_status">Status</a>
-      <a href="/management" class="nav-link" routerLink="management">Management</a>
+      <a href="/status" class="nav-link" routerLink="change_status" *ngIf="isAdmin()">Status</a>
     </li>
+    <li class="nav-item" *ngIf="isAdmin()">
+      <a href="/management" class="nav-link" routerLink="management" *ngIf="isAdmin()">Management</a>
+    </li>
+
+   <!-- User section -->
+
     <li class="nav-item" *ngIf="isUser()">
       <a href="/times" class="nav-link" routerLink="times">Times</a>
     </li>
-    <li class="nav-item" *ngIf="isManager()">
-      <a href="/projects" class="nav-link" routerLink="projects">Projects</a>
-      <a href="/users" class="nav-link" routerLink="users">Users</a>
-      <a href="/times" class="nav-link" routerLink="times">Times</a>
-    </li>
-  </ul>
 
-  <ul class="navbar-nav ml-auto">
+
+
+   <!-- Manaager section -->
+    <li class="nav-item" >
+      <a href="/projects" class="nav-link" routerLink="projects" *ngIf="isManager()">Projects</a> 
+    </li>
+    <li class="nav-item" >
+      <a href="/users" class="nav-link" routerLink="users" *ngIf="isManager()">Users</a>
+    </li>
+    <li class="nav-item" >
+      <a href="/times" class="nav-link" routerLink="times" *ngIf="isManager()">Times</a>
+    </li>
+  
+
+
+
     <!-- Liens pour les utilisateurs non connectés -->
     <li class="nav-item" *ngIf="!isLoggedIn()">
       <a href="/login" class="nav-link" routerLink="login">Login</a>

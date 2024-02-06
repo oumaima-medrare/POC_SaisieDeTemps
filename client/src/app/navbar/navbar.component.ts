@@ -29,6 +29,10 @@ export class NavbarComponent implements OnInit {
   isAdmin(): boolean {
     return this.storageService.getRole() === "ADMIN";
   }
+  getCurrentUserId(): string | number | null {
+    const currentUser = this.storageService.getUser();
+    return currentUser ? currentUser.id : null;
+  }
   logout(): void {
     this.storageService.clean();
 
