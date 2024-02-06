@@ -19,6 +19,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ChangeUserRoleComponent } from './change-user-role/change-user-role.component';
+import { ChangeUserManagerComponent } from './change-user-manager/change-user-manager.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +31,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     ProfileComponent,
     AddProjectComponent,
     AddUserComponent,
-    UserTimesComponent
+    UserTimesComponent,
+    ChangeUserRoleComponent,
+    ChangeUserManagerComponent
   ],
   imports: [
     MatSnackBarModule,

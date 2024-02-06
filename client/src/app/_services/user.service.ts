@@ -16,6 +16,10 @@ export class UserService {
   public getUsersOfManager(manager_id: number){
     return this.httpclient.get(this.PATH_OF_API + "/users/manager/" + manager_id)
   }
+
+  public getAllUsers(){
+    return this.httpclient.get(this.PATH_OF_API + "/users/")
+  }
   
   public getProjectsOfManager(){
     return this.httpclient.get(this.PATH_OF_API + "/projects")
@@ -44,5 +48,10 @@ export class UserService {
 
   public createProject( request: object){
     return this.httpclient.post(this.PATH_OF_API + "/projects/" , request);
+  }
+
+  public changeUserRole(request: object)
+  {
+    return this.httpclient.post(this.PATH_OF_API + "/users/change-role" , request); 
   }
 }

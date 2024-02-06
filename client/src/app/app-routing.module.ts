@@ -6,6 +6,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { AddProjectComponent } from './add-project/add-project.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserTimesComponent } from './user-times/user-times.component';
+import { ChangeUserRoleComponent } from './change-user-role/change-user-role.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'projects', component: AddProjectComponent },
   { path: 'users', component: AddUserComponent },
 { path: 'times', component: UserTimesComponent }, 
+{ path: 'change_status', component: ChangeUserRoleComponent }, 
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
