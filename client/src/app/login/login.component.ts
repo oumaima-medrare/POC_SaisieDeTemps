@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../_services/auth.service';
 import { StorageService } from '../_services/storage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +10,7 @@ import { StorageService } from '../_services/storage.service';
 })
 export class LoginComponent implements OnInit {
   form: any = {
-    username: null,
+    email: null,
     password: null
   };
   isLoggedIn = false;
@@ -17,7 +18,7 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   role: string = '';
 
-  constructor(private authService: AuthService, private storageService: StorageService) { }
+  constructor(private authService: AuthService, private storageService: StorageService,private router:Router) { }
 
   ngOnInit(): void {
     if (this.storageService.isLoggedIn()) {
@@ -27,22 +28,24 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const { username, password } = this.form;
+    const { email, password } = this.form;
 
-    this.authService.login(username, password).subscribe({
+    this.authService.login(email, password).subscribe({
       next: data => {
-        this.storageService.saveUser(data);
 
+        this.storageService.saveUser(data.user);
+        this.storageService.saveToken(data.access_token);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.role = this.storageService.getUser().role;
-        this.reloadPage();
+        this.router.navigate(['home']);
       },
       error: err => {
-        this.errorMessage = err.error.message;
+       this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
     });
+    
   }
 
   reloadPage(): void {

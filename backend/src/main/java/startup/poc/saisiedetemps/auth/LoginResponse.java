@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import startup.poc.saisiedetemps.models.User;
 
 @Data
 @Builder
@@ -16,4 +17,6 @@ public class LoginResponse {
     private String accessToken;
     @JsonProperty("refresh_token")
     private String refreshToken;
+
+    private User user;
 }

@@ -10,6 +10,9 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { ProfileComponent } from './profile/profile.component';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { AddProjectComponent } from './add-project/add-project.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -17,13 +20,17 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     NavbarComponent,
     LoginComponent,
     HomeComponent,
-    ProfileComponent
+    ProfileComponent,
+    AddProjectComponent
   ],
   imports: [
+    MatSnackBarModule,
     BrowserModule,
+    ReactiveFormsModule, 
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent]
