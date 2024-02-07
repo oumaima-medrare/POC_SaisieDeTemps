@@ -1,7 +1,7 @@
 # POC_SaisieDeTemps Overview
 
 ## Backend
-- **GitHub Repository:** [StartupPOC_backend](https://github.com/oumaima-medrare/POC_SaisieDeTemps/backend)
+- **GitHub Repository:** [POC_SaisieDeTemps/backend](https://github.com/oumaima-medrare/POC_SaisieDeTemps/backend)
 - **Language:** Java 18
 - **Framework:** SpringBoot
 
@@ -30,5 +30,5 @@
 3. Run `SaisiedetempsApplication.java`
 
 ## Frontend
-- **GitHub Repository:** [StartupPOC_frontend](https://github.com/oumaima-medrare/POC_SaisieDeTemps/client)
+- **GitHub Repository:** [POC_SaisieDeTemps/client](https://github.com/oumaima-medrare/POC_SaisieDeTemps/client)
 - **Typescript Framework:** Angular
