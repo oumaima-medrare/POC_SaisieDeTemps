@@ -30,7 +30,7 @@ export class UserService {
     return this.httpclient.post(this.PATH_OF_API + "/times", request);
   }
   
-  getAllTimes() {
+ public getAllTimes() {
     return this.httpclient.get(this.PATH_OF_API + "/times");
   }
 

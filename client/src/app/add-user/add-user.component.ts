@@ -46,7 +46,7 @@ export class AddUserComponent {
     this.userService.createUser(this.userRequest).subscribe(
       (data) => {
         console.log('User created successfully:', data);
-        // window.location.reload();
+        window.location.reload();
         // Optionally, redirect to another page or show a success message
       },
       (error) => {
