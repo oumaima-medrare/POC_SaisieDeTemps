@@ -1,0 +1,26 @@
+<!-- manage-time.component.html -->
+<div class="container">
+    <h2>Manage Time Entries</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Project ID</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let time of times">
+          <td><input type="text" [(ngModel)]="time.dateStart" /></td>
+          <td><input type="text" [(ngModel)]="time.dateEnd" /></td>
+          <td><input type="text" [(ngModel)]="time.projectId" /></td>
+          <td>
+            <button (click)="updateTime(time)">Update</button>
+            <button (click)="deleteTime(time.id)">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

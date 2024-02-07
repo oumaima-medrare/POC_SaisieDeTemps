@@ -7,6 +7,8 @@ import { AddProjectComponent } from './add-project/add-project.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { UserTimesComponent } from './user-times/user-times.component';
 import { ChangeUserRoleComponent } from './change-user-role/change-user-role.component';
+import { ExportPdfComponent } from './export-pdf/export-pdf.component';
+import { ManageTimeComponent } from './manage-time/manage-time.component';
 
 
 const routes: Routes = [
@@ -15,8 +17,10 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'projects', component: AddProjectComponent },
   { path: 'users', component: AddUserComponent },
-{ path: 'times', component: UserTimesComponent }, 
-{ path: 'change_status', component: ChangeUserRoleComponent }, 
+  { path: 'times', component: UserTimesComponent }, 
+  { path: 'change_status', component: ChangeUserRoleComponent },
+  { path: 'export', component: ExportPdfComponent },  
+  { path: 'manage-time', component: ManageTimeComponent },  
   { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

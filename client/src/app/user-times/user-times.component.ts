@@ -3,7 +3,8 @@ import { UserService } from '../_services/user.service';
 
 interface Project {
   id: number;
-  name: string;
+  title: string;
+
 }
 
 interface Time {
@@ -32,14 +33,15 @@ export class UserTimesComponent implements OnInit {
   }
 
   loadProjects(): void {
-    this.userService.getProjectsOfManager().subscribe((projects: any) => { // Change here
+    this.userService.getProjectsOfManager().subscribe((projects: any) => {
       this.projects = projects;
     });
   }
 
   loadTimes(): void {
-    this.userService.getCurrentUserTime().subscribe((times: any) => { // Change here
+    this.userService.getCurrentUserTime().subscribe((times: any) => { 
       this.times = times;
+      console.log(this.times)
     });
   }
 
@@ -57,11 +59,10 @@ export class UserTimesComponent implements OnInit {
 
     this.userService.createTime(newTimeRequest).subscribe((response: any) => {
       const newTime: Time = {
-        project: this.projects.find(project => project.id === this.selectedProject)?.name || '',
+        project: this.projects.find(project => project.id === this.selectedProject)?.title|| '',
         startTime: new Date(this.startTime),
         endTime: new Date(this.endTime)
       };
-
       this.times.push(newTime);
 
       // Reset form fields

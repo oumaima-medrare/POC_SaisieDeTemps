@@ -10,6 +10,7 @@ import { StorageService } from '../_services/storage.service';
 export class AddUserComponent {
   user: any = {};
   users: any[] = [];
+  userRequest : any;
 
   constructor(private userService: UserService, private token :StorageService) { }
   ngOnInit(): void {
@@ -28,12 +29,24 @@ export class AddUserComponent {
     );
   }
   onSubmit() {
-    this.user.managerId= this.token.getUser().id;
-    this.user.role= "USER";
-    this.userService.createUser(this.user).subscribe(
+    console.log('id'+this.token.getUser().id);
+    this.userRequest = {
+      username: this.user.username,
+      firstname: this.user.firstname,
+      lastname: this.user.lastname,
+      email: this.user.email,
+      password: this.user.password,
+      role: "USER",
+      managerId: this.token.getUser().id
+    };
+   
+
+
+    console.log(this.userRequest);
+    this.userService.createUser(this.userRequest).subscribe(
       (data) => {
         console.log('User created successfully:', data);
-        window.location.reload();
+        // window.location.reload();
         // Optionally, redirect to another page or show a success message
       },
       (error) => {

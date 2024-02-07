@@ -46,7 +46,7 @@ export class AddProjectComponent {
 
   openSnackBar(response: any){
     if (response){
-      this._snackBar.open("User successfully created !", "Nice !");
+      this._snackBar.open("Project successfully created !", "Nice !");
       this.createProjectForm.reset();
     }
   }

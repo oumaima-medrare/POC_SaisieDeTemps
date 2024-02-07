@@ -31,6 +31,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/v1")
 @Tag(name="Times")
+@CrossOrigin(origins = "*", allowedHeaders = "*", maxAge = 3600, methods = { RequestMethod.OPTIONS, RequestMethod.GET, RequestMethod.POST, RequestMethod.PATCH })
 public class TimeController {
     @Autowired
     private TimeService timeService;
@@ -123,7 +124,7 @@ public class TimeController {
         return new ResponseEntity<>(updatedTime, HttpStatus.OK);
     }
 
-    @GetMapping("/times/{userId}/date/{date}/export/pdf")
+    @GetMapping("/times/{userId}/date/export/pdf")
     public void exportToPDF(HttpServletResponse response, @PathVariable Long userId,
                             @RequestParam(required = false) String _startDate,
                             @RequestParam(required = false) String _endDate) throws DocumentException, IOException {

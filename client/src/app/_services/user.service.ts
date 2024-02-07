@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UserService {
   }
 
   public getAllUsers(){
-    return this.httpclient.get(this.PATH_OF_API + "/users/")
+    return this.httpclient.get(this.PATH_OF_API + "/users")
   }
   
   public getProjectsOfManager(){
@@ -26,7 +27,19 @@ export class UserService {
   }
 
   public createTime(request: object){
-    return this.httpclient.post(this.PATH_OF_API + "/times/", request);
+    return this.httpclient.post(this.PATH_OF_API + "/times", request);
+  }
+  
+  getAllTimes() {
+    return this.httpclient.get(this.PATH_OF_API + "/times");
+  }
+
+  updateTime(timeId: number, updatedTime: any): Observable<any> {
+    return this.httpclient.put(`${this.PATH_OF_API}/times/${timeId}`, updatedTime);
+  }
+
+  deleteTime(timeId: number): Observable<any> {
+    return this.httpclient.delete(`${this.PATH_OF_API}/times/${timeId}`);
   }
 
   public getTimesOfUser(user_id: string | number | null){
@@ -37,21 +50,23 @@ export class UserService {
   {
     return  this.httpclient.get(this.PATH_OF_API + "/times/current" );
   }
-
-  public exportToPdf(userID: number, date: string){
-    return this.httpclient.get(this.PATH_OF_API + "/times/" + userID + "/date/" + date + "/export/pdf", { responseType: 'blob' })
+  
+  public exportToPdf(userID: number, startDate:string, endDate:string){
+    
+    return this.httpclient.get(`${this.PATH_OF_API}/times/${userID}/date/export/pdf?_startDate=${startDate}&_endDate=${endDate}`, { responseType: 'blob' })
   }
 
   public createUser( request: object){
-    return this.httpclient.post(this.PATH_OF_API + "/users/" , request);
+    return this.httpclient.post(this.PATH_OF_API + "/users" , request);
   }
 
   public createProject( request: object){
-    return this.httpclient.post(this.PATH_OF_API + "/projects/" , request);
+    return this.httpclient.post(this.PATH_OF_API + "/projects" , request);
   }
 
   public changeUserRole(request: object)
   {
     return this.httpclient.post(this.PATH_OF_API + "/users/change-role" , request); 
   }
+
 }

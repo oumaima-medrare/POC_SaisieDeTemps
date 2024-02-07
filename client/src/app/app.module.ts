@@ -21,7 +21,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ChangeUserRoleComponent } from './change-user-role/change-user-role.component';
 import { ChangeUserManagerComponent } from './change-user-manager/change-user-manager.component';
+import { ExportPdfComponent } from './export-pdf/export-pdf.component';
 
+import { UserService } from './_services/user.service';
+import { ManageTimeComponent } from './manage-time/manage-time.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +36,10 @@ import { ChangeUserManagerComponent } from './change-user-manager/change-user-ma
     AddUserComponent,
     UserTimesComponent,
     ChangeUserRoleComponent,
-    ChangeUserManagerComponent
+    ChangeUserManagerComponent,
+    ExportPdfComponent,
+    ManageTimeComponent,
+   
   ],
   imports: [
     MatSnackBarModule,
