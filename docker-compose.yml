@@ -12,11 +12,23 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
-      
+
   adminer:
-      image: adminer
-      restart: always
-      ports:
-        - 8080:8080
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"
+
+  saisiedetemps:
+    build:
+      context: ./backend
+    environment:
+      - SERVER_PORT=$SERVER_PORT
+      - ACTIVE_PROFILE=$ACTIVE_PROFILE
+    ports:
+      - 3000:$SERVER_PORT
+    depends_on:
+      - postgres
+
 volumes:
   postgres_data:
